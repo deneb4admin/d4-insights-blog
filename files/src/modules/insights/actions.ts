@@ -8,7 +8,7 @@ import type { Article } from "./types";
 export async function getArticlesAction(): Promise<{ articles: Article[]; error?: string }> {
   try {
     await assertAuthenticated();
-    return { articles: getArticles() };
+    return { articles: await getArticles() };
   } catch (e) {
     return { articles: [], error: String(e) };
   }
@@ -19,7 +19,7 @@ export async function saveArticlesAction(
 ): Promise<{ success: boolean; error?: string }> {
   try {
     await assertAuthenticated();
-    saveArticles(articles);
+    await saveArticles(articles);
     revalidatePath("/insights");
     return { success: true };
   } catch (e) {

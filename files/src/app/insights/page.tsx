@@ -5,8 +5,8 @@ import { getArticles } from "@/modules/insights/data";
 export const metadata: Metadata = { title: "Insights" };
 export const dynamic = "force-dynamic";
 
-export default function InsightsPage() {
-  const articles = getArticles();
+export default async function InsightsPage() {
+  const articles = await getArticles();
 
   return (
     <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6">

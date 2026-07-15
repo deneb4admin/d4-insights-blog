@@ -11,7 +11,7 @@ export default async function ArticlePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const article = getArticle(id);
+  const article = await getArticle(id);
   if (!article) notFound();
 
   return (
